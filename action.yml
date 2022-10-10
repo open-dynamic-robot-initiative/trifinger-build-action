@@ -32,6 +32,7 @@ runs:
   using: "composite"
   steps:
     - name: Install Apptainer
+      shell: bash
       run: |
         APPTAINER_VERSION=1.1.2
         wget https://github.com/apptainer/apptainer/releases/download/v${APPTAINER_VERSION}/apptainer_${APPTAINER_VERSION}_amd64.deb
@@ -41,14 +42,17 @@ runs:
       uses: actions/checkout@v3
 
     - name: Pull Container
+      shell: bash
       run: |
         apptainer pull oras://ghcr.io/open-dynamic-robot-initiative/trifinger_singularity/trifinger_user:latest
 
     - name: Add matcher for gcc warnings
+      shell: bash
       run: |
         echo "::add-matcher::.github/workflows/gcc_problem_matcher.json"
 
     - name: Build
+      shell: bash
       run: ./trifinger_user_latest.sif colcon build
 
 
@@ -56,6 +60,7 @@ runs:
 
     - name: Build documentation
       if: github.event.inputs.build_doc
+      shell: bash
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
         ./trifinger_user_latest.sif bcat -o docbuild -p . --python-dir install/${pkg_name}/lib/python3.8/site-packages/${pkg_name}
@@ -74,10 +79,9 @@ runs:
 
     - name: Run tests
       if: github.event.inputs.run_tests
+      shell: bash
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
         echo "Run tests of package ${pkg_name}"
         ./trifinger_user_latest.sif colcon test --packages-select=${pkg_name}
         ./trifinger_user_latest.sif colcon test-result --verbose
-
-
