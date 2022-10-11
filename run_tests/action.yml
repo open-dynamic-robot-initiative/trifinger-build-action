@@ -1,0 +1,21 @@
+name: Run Tests
+description: |
+  Run `colon test` in an Apptainer container.  This assumes that the workspace
+  has already been built in a previous step.
+
+inputs:
+  container:
+    description: "Name of the Apptainer image."
+    type: str
+    default: trifinger_user_latest.sif
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run tests
+      shell: bash
+      run: |
+        pkg_name=${GITHUB_REPOSITORY#*/}
+        echo "Run tests of package ${pkg_name}"
+        apptainer run ${{ inputs.container }} colcon test --packages-select=${pkg_name}
+        apptainer run ${{ inputs.container }} colcon test-result --verbose

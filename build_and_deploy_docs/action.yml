@@ -1,0 +1,31 @@
+name: Build and Deploy Documentation
+description: |
+  Build documentation using breathing cat and deploy to GitHub Pages.
+
+inputs:
+  container:
+    description: "Name of the Apptainer image."
+    type: str
+    default: trifinger_user_latest.sif
+  build_dir:
+    description: "Directory to which build files are written."
+    type: str
+    default: "docbuild"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build documentation
+      shell: bash
+      run: |
+        pkg_name=${GITHUB_REPOSITORY#*/}
+        apptainer run ${{ inputs.container }} bcat -o ${{ inputs.build_dir }} -p . --python-dir install/${pkg_name}/lib/python3.8/site-packages/${pkg_name}
+
+    - name: Upload documentation artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: ${{ inputs.build_dir }}/html
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1

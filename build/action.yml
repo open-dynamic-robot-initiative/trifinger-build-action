@@ -1,0 +1,22 @@
+name: Build Package
+description: |
+  Build a package using colcon inside an Apptainer container.  If using a local
+  SIF file, it needs to present in the workspace.
+
+inputs:
+  container:
+    description: "Name of the Apptainer image."
+    type: str
+    default: trifinger_user_latest.sif
+
+runs:
+  using: "composite"
+  steps:
+    - name: Add matcher for gcc warnings
+      shell: bash
+      run: |
+        echo "::add-matcher::${{ github.action_path }}/gcc_problem_matcher.json"
+
+    - name: Build
+      shell: bash
+      run: apptainer run ${{ inputs.container }} colcon build

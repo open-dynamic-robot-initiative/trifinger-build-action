@@ -1,0 +1,34 @@
+name: Setup Apptainer
+description: |
+  Install Apptainer and pull a container (so it can be used in following steps).
+  By default the latest "trifinger_user" container is used but this can be
+  modified via input parameters.
+
+inputs:
+  apptainer_version:
+    description: |
+      Which version of Apptainer to install.  Needs to match a GitHub release.
+    type: string
+    default: "1.1.2"
+  uri:
+    description: "URI for pulling the container"
+    type: string
+    default: oras://ghcr.io/open-dynamic-robot-initiative/trifinger_singularity/trifinger_user:latest
+  output_file:
+    description: "Name of the output file."
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Apptainer
+      shell: bash
+      run: |
+        VERSION=${{ inputs.apptainer_version }}
+        wget --no-verbose https://github.com/apptainer/apptainer/releases/download/v${VERSION}/apptainer_${VERSION}_amd64.deb
+        sudo apt-get install ./apptainer_${VERSION}_amd64.deb
+
+    - name: Pull Container
+      shell: bash
+      run: |
+        apptainer pull ${{ inputs.output_file }} ${{ inputs.uri}}
