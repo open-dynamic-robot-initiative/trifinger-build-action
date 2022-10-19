@@ -6,7 +6,7 @@ inputs:
   container:
     description: "Name of the Apptainer image."
     type: str
-    default: trifinger_user_latest.sif
+    default: container.sif
   build_dir:
     description: "Directory to which build files are written."
     type: str

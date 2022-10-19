@@ -79,9 +79,7 @@ Inputs:
   release on the [Apptainer repository](https://github.com/apptainer/apptainer/releases).
 - uri (default: latest trifinger_user image):  URI to pull the container from
   (as it is used by `apptainer pull`).
-- output_file:  Name of the image that is written.  If not set the default is
-  used, i.e. it's derived from the URI ("trifinger_user_latest.sif" in case of
-  the default URI).
+- output_file (default: container.sif):  Name of the image that is written.
 
 
 ### build
@@ -93,7 +91,7 @@ have a run script that sets up the environment as needed and then executes the
 given command.
 
 Inputs:
-- container (default: trifinger_user_latest.sif):  Name of the Apptainer image.
+- container (default: container.sif):  Name of the Apptainer image.
 
 
 ### run_tests
@@ -105,7 +103,7 @@ have a run script that sets up the environment as needed and then executes the
 given command.
 
 Inputs:
-- container (default: trifinger_user_latest.sif):  Name of the Apptainer image.
+- container (default: container.sif):  Name of the Apptainer image.
 
 
 ### build_and_deploy_docs
@@ -120,5 +118,5 @@ have a run script that sets up the environment as needed and then executes the
 given command.  Further breathing cat needs to be installed in the container.
 
 Inputs:
-- container (default: trifinger_user_latest.sif):  Name of the Apptainer image.
+- container (default: container.sif):  Name of the Apptainer image.
 - build_dir (default: docbuild):  Directory to which build files are written.

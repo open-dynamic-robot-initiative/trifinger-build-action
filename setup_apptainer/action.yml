@@ -17,6 +17,7 @@ inputs:
   output_file:
     description: "Name of the output file."
     type: string
+    default: container.sif
 
 runs:
   using: "composite"
