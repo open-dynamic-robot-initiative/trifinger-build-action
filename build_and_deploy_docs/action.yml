@@ -12,6 +12,11 @@ inputs:
     type: str
     default: "docbuild"
 
+outputs:
+  page_url:
+    descriptions: "URL to the deployed documentation."
+    value: ${{ steps.deployment.outputs.page_url }}
+
 runs:
   using: "composite"
   steps:

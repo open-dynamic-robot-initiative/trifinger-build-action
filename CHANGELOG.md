@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Provide the page_url of actions/deploy-pages as output of the
+  build_and_deploy_docs action.
+
 ### Changed
 - Change default name of container to "container.sif" (both in output of the
   setup_apptainer action and in the input of the others).  This means that no
