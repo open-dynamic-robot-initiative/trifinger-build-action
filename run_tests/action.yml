@@ -17,5 +17,5 @@ runs:
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
         echo "Run tests of package ${pkg_name}"
-        apptainer run ${{ inputs.container }} colcon test --packages-select=${pkg_name}
+        apptainer run ${{ inputs.container }} colcon test --packages-select=${pkg_name} --event-handlers console_direct+
         apptainer run ${{ inputs.container }} colcon test-result --verbose
