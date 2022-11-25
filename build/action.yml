@@ -19,4 +19,4 @@ runs:
 
     - name: Build
       shell: bash
-      run: apptainer run --containall --bind=$(pwd) --pwd=$(pwd) ${{ inputs.container }} colcon build
+      run: apptainer run --containall --bind=/tmp,$(pwd) --pwd=$(pwd) ${{ inputs.container }} colcon build
