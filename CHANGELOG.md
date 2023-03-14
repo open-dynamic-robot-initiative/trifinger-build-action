@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enable full output when running `colcon test`.  This can provide important
   information for debugging in case a test fails.
 
+## Fixed
+- Source workspace setup.bash for building documentation. This is needed as
+  otherwise Python modules did not show up.
+
 ## [2.0.0] - 2022-10-19
 ### Added
 - Provide the page_url of actions/deploy-pages as output of the

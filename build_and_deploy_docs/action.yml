@@ -24,6 +24,7 @@ runs:
       shell: bash
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
+        . install/setup.bash
         apptainer run ${{ inputs.container }} bcat -o ${{ inputs.build_dir }} -p . --python-dir install/${pkg_name}/lib/python3.8/site-packages/${pkg_name}
 
     - name: Upload documentation artifact
