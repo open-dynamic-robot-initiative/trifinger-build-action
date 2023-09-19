@@ -24,9 +24,7 @@ runs:
       shell: bash
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
-        . install/setup.bash
-        python_dir=$(python3 -c "import importlib, os; print(os.path.dirname(importlib.util.find_spec('${pkg_name}').origin))")
-        apptainer run ${{ inputs.container }} bcat -o "${{ inputs.build_dir }}" -p . --python-dir "${python_dir}"
+        apptainer run ${{ inputs.container }} bash -e ${{ github.action_path }}/build.sh "${{ inputs.build_dir }}" ${pkg_name}
 
     - name: Upload documentation artifact
       uses: actions/upload-pages-artifact@v1
