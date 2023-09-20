@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2023-09-20
+### Fixed
+- Fixed an error with the Python package finding added in 2.0.2.
+
 ## [2.0.2] - 2023-09-13
 ### Fixed
 - Use importlib to find the path to the Python package (for documentation build)
@@ -38,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 First version.
 
 
-[Unreleased]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.2...HEAD
+[Unreleased]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.3...HEAD
+[2.0.3]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.2...2.0.3
 [2.0.2]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.1...2.0.2
 [2.0.1]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.0...2.0.1
 [2.0.0]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v1.0.0...2.0.0
