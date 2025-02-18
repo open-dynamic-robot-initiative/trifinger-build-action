@@ -27,10 +27,10 @@ runs:
         apptainer run ${{ inputs.container }} bash -e ${{ github.action_path }}/build.sh "${{ inputs.build_dir }}" ${pkg_name}
 
     - name: Upload documentation artifact
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ${{ inputs.build_dir }}/html
 
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v1
+      uses: actions/deploy-pages@v4
