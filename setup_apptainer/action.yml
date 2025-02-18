@@ -9,7 +9,7 @@ inputs:
     description: |
       Which version of Apptainer to install.  Needs to match a GitHub release.
     type: string
-    default: "1.1.2"
+    default: "1.3.6"
   uri:
     description: "URI for pulling the container"
     type: string
