@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.6] - 2026-02-02
+### Changed
+- Increase default Apptainer version to 1.4.5
 
 ## [2.0.5] - 2025-02-18
 ### Changed
@@ -56,7 +59,8 @@ First version.
 
 ---
 
-[Unreleased]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.5...HEAD
+[Unreleased]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.6...HEAD
+[2.0.6]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.5...v2.0.6
 [2.0.5]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.4...v2.0.5
 [2.0.4]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.3...v2.0.4
 [2.0.3]: https://github.com/open-dynamic-robot-initiative/trifinger-build-action/compare/v2.0.2...v2.0.3

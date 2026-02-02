@@ -35,7 +35,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     # permissions and environment are only needed for the build_and_deploy_docs
     # action.
