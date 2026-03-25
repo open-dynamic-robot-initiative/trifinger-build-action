@@ -24,7 +24,10 @@ runs:
       shell: bash
       run: |
         pkg_name=${GITHUB_REPOSITORY#*/}
-        apptainer run ${{ inputs.container }} bash -e ${{ github.action_path }}/build.sh "${{ inputs.build_dir }}" ${pkg_name}
+        apptainer run -ec --bind "${{ github.action_path }}" --bind $(pwd) --pwd $(pwd) \
+          ${{ inputs.container }} \
+          bash -e ${{ github.action_path }}/build.sh \
+            "${{ inputs.build_dir }}" ${pkg_name}
 
     - name: Upload documentation artifact
       uses: actions/upload-pages-artifact@v4
